@@ -120,7 +120,7 @@ export const createSnippet = inputs => {
     element.contentWindow.postMessage({
       isSnippet: true,
       data: inputs
-    })
+    }, "*")
   })
   // set embed host url
   element.src = host

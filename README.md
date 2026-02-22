@@ -82,7 +82,7 @@ iframe.contentWindow.postMessage({
     from: 5,
     to: 25
   }
-})
+}, "*")
 ```
 
 ### Developed by Deshan Nawanjana
