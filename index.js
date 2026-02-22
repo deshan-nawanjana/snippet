@@ -15,9 +15,9 @@ const createElement = (className, content, parent) => {
 }
 
 // get snippet view elements
-const tabsElement = document.querySelector(".tabs")
-const codeElement = document.querySelector(".code")
-const linesElement = document.querySelector(".lines")
+const tabsElement = document.querySelector(".snippet-tabs")
+const codeElement = document.querySelector(".snippet-code")
+const linesElement = document.querySelector(".snippet-lines")
 
 // method to initiate
 const init = async inputs => {
@@ -41,7 +41,7 @@ const init = async inputs => {
     // remove selected tab
     if (previous) { previous.removeAttribute("data-selected") }
     // get tab elements
-    const tabs = document.querySelectorAll(".tab-item")
+    const tabs = document.querySelectorAll(".snippet-tab-item")
     // set current tab as selected
     tabs[index].setAttribute("data-selected", true)
     // get lines count
@@ -51,7 +51,7 @@ const init = async inputs => {
     // for each line
     for (let n = 0; n < lines; n++) {
       // create and append line element
-      createElement("line-item", start + n, linesElement)
+      createElement("snippet-line-item", start + n, linesElement)
     }
   }
   // for each content tab
@@ -61,7 +61,7 @@ const init = async inputs => {
     // get tab title
     const title = content.title ?? content.url?.split("/").pop()
     // create tab item
-    const item = createElement("tab-item", title, tabsElement)
+    const item = createElement("snippet-tab-item", title, tabsElement)
     // set tab title if url given
     if (content.url) { item.setAttribute("title", content.url) }
     // add tab item event
@@ -123,3 +123,15 @@ window.addEventListener("message", event => {
   // initiate with post message data
   init(event.data.data)
 })
+
+// initiation delay
+setTimeout(() => {
+  // return if embed
+  if (window.parent != window) { return }
+  // initiate readme file
+  init({
+    title: "Snippet.js",
+    source: "https://github.com/deshan-nawanjana/snippet/blob/main/README.md",
+    to: 89
+  })
+}, 800)
