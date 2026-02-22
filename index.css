@@ -1,0 +1,108 @@
+* {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "FiraCode";
+}
+
+body {
+  margin: 0px;
+  width: 100vw;
+  height: calc(100vh - calc(100vh - 100%));
+  background-image: url(./assets/images/spinner.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 26px auto;
+  background-color: #23272e;
+  overflow: hidden;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+
+.snippet {
+  display: none;
+  background-color: #23272e;
+  width: inherit;
+  height: inherit;
+}
+
+[data-ready] .snippet {
+  display: block;
+}
+
+.tabs {
+  display: flex;
+  background-color: #1e2227;
+  user-select: none;
+  line-height: 40px;
+  height: 40px;
+}
+
+.tab-item {
+  color: #fff;
+  font-size: 12px;
+  padding: 0px 14px;
+  cursor: pointer;
+}
+
+.tab-item:hover {
+  background-color: #ffffff08;
+}
+
+.tab-item[data-selected] {
+  background-color: #ffffff16;
+}
+
+.content {
+  display: flex;
+  padding: 10px;
+  overflow-y: auto;
+  height: calc(100vh - 40px - 20px);
+  gap: 10px;
+}
+
+.content::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.content::-webkit-scrollbar-track {
+  box-shadow: inset 1px 0px 0px 0px #31343a;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: #343944;
+}
+
+.content::-webkit-scrollbar-corner {
+  background-color: #23272e;
+}
+
+.content * {
+  line-height: 17px;
+  font-size: 13px;
+}
+
+.lines {
+  text-align: right;
+  user-select: none;
+}
+
+.line-item {
+  color: #495162;
+}
+
+.code {
+  padding: 0px;
+  margin: 0px;
+  color: #ccc;
+}
+
+.code::selection {
+  background-color: #fff2;
+}
+
+[data-tabs="false"] .content {
+  height: calc(100vh - 20px);
+}
