@@ -53,7 +53,7 @@ Then load Snippet module and use `loadAll` method.
 ```html
 <script type="module">
   // import snippet module
-  import { Snippet } from "http://localhost/modules/Snippet.js"
+  import { Snippet } from "https://deshan-nawanjana.github.io/snippet/modules/Snippet.js"
   // load all embedding places
   window.addEventListener("load", Snippet.loadAll)
 </script>
