@@ -31,7 +31,7 @@ body {
   display: block;
 }
 
-.tabs {
+.snippet-tabs {
   display: flex;
   background-color: #1e2227;
   user-select: none;
@@ -39,22 +39,22 @@ body {
   height: 40px;
 }
 
-.tab-item {
+.snippet-tab-item {
   color: #fff;
   font-size: 12px;
   padding: 0px 14px;
   cursor: pointer;
 }
 
-.tab-item:hover {
+.snippet-tab-item:hover {
   background-color: #ffffff08;
 }
 
-.tab-item[data-selected] {
+.snippet-tab-item[data-selected] {
   background-color: #ffffff16;
 }
 
-.content {
+.snippet-content {
   display: flex;
   padding: 10px;
   overflow-y: auto;
@@ -62,47 +62,47 @@ body {
   gap: 10px;
 }
 
-.content::-webkit-scrollbar {
+.snippet-content::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-.content::-webkit-scrollbar-track {
+.snippet-content::-webkit-scrollbar-track {
   box-shadow: inset 1px 0px 0px 0px #31343a;
 }
 
-.content::-webkit-scrollbar-thumb {
+.snippet-content::-webkit-scrollbar-thumb {
   background-color: #343944;
 }
 
-.content::-webkit-scrollbar-corner {
+.snippet-content::-webkit-scrollbar-corner {
   background-color: #23272e;
 }
 
-.content * {
+.snippet-content * {
   line-height: 17px;
   font-size: 13px;
 }
 
-.lines {
+.snippet-lines {
   text-align: right;
   user-select: none;
 }
 
-.line-item {
+.snippet-line-item {
   color: #495162;
 }
 
-.code {
+.snippet-code {
   padding: 0px;
   margin: 0px;
   color: #ccc;
 }
 
-.code::selection {
+.snippet-code::selection {
   background-color: #fff2;
 }
 
-[data-tabs="false"] .content {
+[data-tabs="false"] .snippet-content {
   height: calc(100vh - 20px);
 }
