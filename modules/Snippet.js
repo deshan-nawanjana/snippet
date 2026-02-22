@@ -114,6 +114,8 @@ const host = import.meta.url.replace("modules/Snippet.js", "")
 export const createSnippet = inputs => {
   // create frame element
   const element = document.createElement("iframe")
+  // set snippet attribute
+  element.setAttribute("snippet", "")
   // frame load listener
   element.addEventListener("load", () => {
     // post message source inputs
@@ -128,6 +130,28 @@ export const createSnippet = inputs => {
   return element
 }
 
+/** Loads all embeds from template elements */
+export const loadAll = async () => {
+  // get all template elements
+  const templates = document.querySelectorAll("snippet")
+  // for each element
+  for (let i = 0; i < templates.length; i++) {
+    // current template item
+    const item = templates[i]
+    // create sippet
+    const snippet = createSnippet({
+      source: item.getAttribute("source") ?? item.innerHTML.trim(),
+      language: item.getAttribute("language"),
+      from: parseInt(item.getAttribute("from")) || null,
+      to: parseInt(item.getAttribute("to")) || null,
+      title: item.getAttribute("title")
+    })
+    // replace snippet with template
+    item.replaceWith(snippet)
+  }
+}
+
 // global accessibility
 window.Snippet = Snippet
 window.Snippet.createSnippet = createSnippet
+window.Snippet.loadAll = loadAll

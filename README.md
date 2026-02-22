@@ -32,7 +32,34 @@ Unless you provide a *title* option.
 
 Make sure the given url is `public` and has `no cross origin issues`
 
-## 2. Create an embed using Snippet module
+## 2. Load using `<snippet>` element
+
+Snippet can identify custom element and load the anywhere inside the webpage.
+
+```html
+<snippet source="https://path/to/file.html" title="HelloWorld.js"></snippet>
+```
+
+For direct code segments, place the content between open and close tags.
+
+```html
+<snippet language="js" title="HelloWorld.js">
+  console.log('Hello World')
+</snippet>
+```
+
+Then load Snippet module and use `loadAll` method.
+
+```html
+<script type="module">
+  // import snippet module
+  import { Snippet } from "http://localhost/modules/Snippet.js"
+  // load all embedding places
+  window.addEventListener("load", Snippet.loadAll)
+</script>
+```
+
+## 3. Create with Snippet module
 
 You can import Snippet module from GitHub and use `createSnippet` method.
 
@@ -49,11 +76,11 @@ const embed_1 = Snippet.createSnippet({
 // create multi file snippet
 const embed_2 = Snippet.createSnippet([
   {
-    source: "path/to/home.html",
+    source: "https://path/to/home.html",
     title: "Home Page"
   },
   {
-    source: "path/to/about.html",
+    source: "https://path/to/about.html",
     title: "About Page"
   }
 ])
@@ -63,7 +90,7 @@ document.body.appendChild(embed_1)
 document.body.appendChild(embed_2)
 ```
 
-## 3. Post message into iframes
+## 4. Post message into iframes
 
 You also can post messages into Snippet tool and load to content dynamically
 
@@ -78,7 +105,7 @@ const iframe = document.querySelector("iframe")
 iframe.contentWindow.postMessage({
   isSnippet: true,
   data: {
-    source: "path/to/file.html",
+    source: "https://path/to/file.html",
     from: 5,
     to: 25
   }

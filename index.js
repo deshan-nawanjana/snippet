@@ -132,6 +132,6 @@ setTimeout(() => {
   init({
     title: "Snippet.js",
     source: "https://github.com/deshan-nawanjana/snippet/blob/main/README.md",
-    to: 89
+    to: 116
   })
 }, 800)
