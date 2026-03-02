@@ -4,6 +4,23 @@
   font-family: "FiraCode";
 }
 
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 1px 0px 0px 0px #31343a;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #343944;
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: #23272e;
+}
+
 body {
   margin: 0px;
   width: 100vw;
@@ -62,23 +79,6 @@ body {
   gap: 10px;
 }
 
-.snippet-content::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-.snippet-content::-webkit-scrollbar-track {
-  box-shadow: inset 1px 0px 0px 0px #31343a;
-}
-
-.snippet-content::-webkit-scrollbar-thumb {
-  background-color: #343944;
-}
-
-.snippet-content::-webkit-scrollbar-corner {
-  background-color: #23272e;
-}
-
 .snippet-content * {
   line-height: 17px;
   font-size: 13px;
@@ -103,6 +103,11 @@ body {
   background-color: #fff2;
 }
 
+[data-tabs="false"] .snippet {
+  overflow-y: auto;
+}
+
 [data-tabs="false"] .snippet-content {
-  height: calc(100vh - 20px);
+  min-height: calc(100vh - 20px);
+  height: auto;
 }
