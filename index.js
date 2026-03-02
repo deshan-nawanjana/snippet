@@ -118,20 +118,34 @@ if (params.has("source_1")) {
 
 // listen to post messages
 window.addEventListener("message", event => {
+  // get event data
+  const data = event.data
   // return if not snippet data
-  if (!event.data || !event.data.isSnippet) { return }
+  if (!data || !data.isSnippet) { return }
+  // return if no snippet data
+  if (!data.data) { return }
+  // set document title if given
+  if (data.title) { document.title = data.title }
   // initiate with post message data
-  init(event.data.data)
+  init(data.data)
 })
 
 // initiation delay
 setTimeout(() => {
-  // return if embed
-  if (window.parent != window) { return }
-  // initiate readme file
-  init({
-    title: "Snippet.js",
-    source: "https://github.com/deshan-nawanjana/snippet/blob/main/README.md",
-    to: 116
-  })
+  // return if embed or opener exists
+  if (window.parent != window || window.opener) {
+    // get source document
+    const source = window.opener || window.parent
+    // get url id param
+    const id = location.hash.replace("#", "")
+    // post message as ready
+    source.postMessage({ isSnippet: true, id }, "*")
+  } else {
+    // initiate readme file
+    init({
+      title: "Snippet.js",
+      source: "https://github.com/deshan-nawanjana/snippet/blob/main/README.md",
+      to: 116
+    })
+  }
 }, 800)
